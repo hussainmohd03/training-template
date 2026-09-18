@@ -1,0 +1,27 @@
+model:
+  base_model: 'fdtn-ai/Foundation-Sec-8B'
+  output_dir: './models/Foundation-Sec-8B-finetuned'
+
+lora:
+  r: 16
+  lora_alpha: 32
+  target_modules:
+    [
+      'q_proj',
+      'k_proj',
+      'v_proj',
+      'o_proj',
+      'gate_proj',
+      'up_proj',
+      'down_proj'
+    ]
+
+training:
+  completion_only_loss: true
+  learning_rate:
+  max_length: 512
+
+data:
+  train_file: 'train.jsonl'
+  val_file: 'val.jsonl'
+  test_file: 'test.jsonl'
