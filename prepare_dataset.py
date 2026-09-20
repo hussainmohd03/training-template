@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-from datasets import load_dataset
+from datasets import Dataset, load_dataset
 from enum import Enum
 
 
@@ -16,7 +16,7 @@ class DatasetSplitter:
         self.val_size = val_size
         self.seed = seed
 
-    def load(self): 
+    def load(self) -> Dataset: 
         if os.path.exists(self.input_file):
             file_extension = os.path.splitext(self.input_file)[1][1:]
             ds_type = ds_types.get(file_extension)
@@ -24,7 +24,7 @@ class DatasetSplitter:
                 raise ValueError(f"Unsupported file type: {file_extension}")
             return load_dataset(ds_type, data_files=self.input_file, split="train")
 
-        return load_dataset(self.input_file)
+        return load_dataset(self.input_file, split="train")
 
     def split(self): 
         ...

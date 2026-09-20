@@ -1,10 +1,10 @@
 model:
-  base_model: 'fdtn-ai/Foundation-Sec-1.1-8B-Instruct'
-  output_dir: './models/foundation-sec-finetuned'
-  # load_in_4bit: True
-  # bnb_4bit_compute_dtype: 'bfloat16'
-  # bnb_4bit_use_double_quant: True
-  # bnb_4bit_quant_type: 'nf4'
+  base_model: 'Qwen/Qwen3.8-27B'
+  output_dir: './models/Qwen/Qwen3.8-27B-finetuned'
+  load_in_4bit: True
+  bnb_4bit_compute_dtype: 'bfloat16'
+  bnb_4bit_use_double_quant: True
+  bnb_4bit_quant_type: 'nf4'
 
 lora:
   r: 16
